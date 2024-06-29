@@ -4,8 +4,8 @@ from crewai import Crew, Process, Agent, Task
 from langchain_core.callbacks import BaseCallbackHandler
 from typing import TYPE_CHECKING, Any, Dict, Optional
 
-# key="AIzaSyAKEaaM7fWIErN3VbikjP_T5m0UfhBy5iE"
-key =st.secrets.API_KEY
+key="AIzaSyAKEaaM7fWIErN3VbikjP_T5m0UfhBy5iE"
+# key =st.secrets.API_KEY
 from langchain_google_genai import GoogleGenerativeAI
 llm = GoogleGenerativeAI(model='gemini-pro',google_api_key=key)
 
@@ -30,14 +30,14 @@ class MyCustomHandler(BaseCallbackHandler):
         """Print out that we finished a chain."""
         st.session_state.messages.append({"role": self.agent_name, "content": outputs['output']})
         st.chat_message(self.agent_name, avatar=avators[self.agent_name]).write(outputs['output'])
-doctor = Agent(
+Writer = Agent(
     role='Veterinary doctor',
     backstory='''You have a knack for beagle breed.''',
     goal="Write the interpretation of dog test.",
     llm=llm,
     callbacks=[MyCustomHandler("Writer")],
 )
-reviewer = Agent(
+Reviewer = Agent(
     role='Senior Veterinary doctor',
     backstory = '''You're a meticulous doctor with a keen eye for detail. You're known for
                 your ability to turn complex case into clear and concise reports, making
@@ -61,19 +61,19 @@ if prompt := st.chat_input():
 
     task1 = Task(
       description=f"""Write the refrence ranges to compare against the {prompt}. """,
-      agent=doctor,
+      agent=Writer,
       expected_output="Prepare a interpretation of the dog test result."
     )
 
     task2 = Task(
       description="""Using the iterpreatation provided, provide a comprhensive diagnosis.""",
-      agent=reviewer,
+      agent=Reviewer,
       expected_output="Provide a diagnostic report including the clinical context , next steps and conclusion."
     )
     # Establishing the crew with a hierarchical process
     project_crew = Crew(
         tasks=[task1, task2],  # Tasks to be delegated and executed under the manager's supervision
-        agents=[doctor, reviewer],
+        agents=[Writer, Reviewer],
         manager_llm=llm,
         process=Process.hierarchical  # Specifies the hierarchical management approach
     )

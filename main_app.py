@@ -33,22 +33,7 @@ class MyCustomHandler(BaseCallbackHandler):
         """Print out that we finished a chain."""
         st.session_state.messages.append({"role": self.agent_name, "content": outputs['output']})
         st.chat_message(self.agent_name, avatar=avators[self.agent_name]).write(outputs['output'])
-Writer = Agent(
-    role='Veterinary doctor',
-    backstory='''You have a knack for beagle breed.''',
-    goal="Write the interpretation of dog test.",
-    llm=llm,
-    callbacks=[MyCustomHandler("Writer")],
-)
-Reviewer = Agent(
-    role='Senior Veterinary doctor',
-    backstory = '''You're a meticulous doctor with a keen eye for detail. You're known for
-                your ability to turn complex case into clear and concise reports, making
-                it easy for others to understand and act on the information you provide..''',
-    goal="Write the clinical context,next step and conclusion of the dog test",
-    llm=llm,
-    callbacks=[MyCustomHandler("Reviewer")],
-)
+
 
 st.title("💬 Snoopy Care")
 if "messages" not in st.session_state:
@@ -61,6 +46,22 @@ if prompt := st.chat_input():
 
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
+    Writer = Agent(
+        role='Veterinary doctor',
+        backstory='''You have a knack for beagle breed.''',
+        goal="Write the interpretation of dog test.",
+        llm=llm,
+        callbacks=[MyCustomHandler("Writer")],
+    )
+    Reviewer = Agent(
+        role='Senior Veterinary doctor',
+        backstory = '''You're a meticulous doctor with a keen eye for detail. You're known for
+                    your ability to turn complex case into clear and concise reports, making
+                    it easy for others to understand and act on the information you provide..''',
+        goal="Write the clinical context,next step and conclusion of the dog test",
+        llm=llm,
+        callbacks=[MyCustomHandler("Reviewer")],
+    )
 
     task1 = Task(
       description=f"""Write the refrence ranges to compare against the {prompt}. """,

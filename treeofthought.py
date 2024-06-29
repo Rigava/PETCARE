@@ -5,8 +5,8 @@ import google.generativeai as genai
 
 import streamlit as st 
 import os 
-key="AIzaSyAKEaaM7fWIErN3VbikjP_T5m0UfhBy5iE"
 
+key =st.secrets.API_KEY
 llm = ChatGoogleGenerativeAI(
     model="gemini-pro",
     temperature=0.1,

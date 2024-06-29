@@ -5,8 +5,8 @@ from langchain_core.callbacks import BaseCallbackHandler
 from typing import TYPE_CHECKING, Any, Dict, Optional
 import google.generativeai as genai 
 
-key="AIzaSyAKEaaM7fWIErN3VbikjP_T5m0UfhBy5iE"
-# key =st.secrets.API_KEY
+
+key =st.secrets.API_KEY
 from langchain_google_genai import GoogleGenerativeAI
 llm = GoogleGenerativeAI(model='gemini-pro',google_api_key=key)
 
@@ -46,6 +46,7 @@ if prompt := st.chat_input():
 
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
+
     Writer = Agent(
         role='Veterinary doctor',
         backstory='''You have a knack for beagle breed.''',

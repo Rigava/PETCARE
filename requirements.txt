@@ -1,4 +1,4 @@
 crewai
 streamlit
 langchain-google-genai
-langchain==0.0.339
+langchain==0.0.336

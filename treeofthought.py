@@ -3,7 +3,6 @@ from langchain.chains import LLMChain, SequentialChain
 from langchain.prompts import PromptTemplate
 import google.generativeai as genai 
 
-from dotenv import load_dotenv
 import streamlit as st 
 import os 
 key="AIzaSyAKEaaM7fWIErN3VbikjP_T5m0UfhBy5iE"

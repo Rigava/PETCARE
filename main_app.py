@@ -9,13 +9,13 @@ from typing import TYPE_CHECKING, Any, Dict, Optional
 
 import google.generativeai as palm 
 key =st.secrets.API_KEY
-palm.configure(google_api_key=key)
+palm.configure(api_key=key)
 
 
 # from langchain_google_genai import GoogleGenerativeAI
 # llm = GoogleGenerativeAI(model='models/text-bison-001',google_api_key=key)
 from langchain_community.llms import GooglePalm
-llm = GooglePalm(model ='models/gemini-1.0-pro',google_api_key =key)
+llm = GooglePalm(model ='models/text-bison-001',google_api_key =key)
 
 
 

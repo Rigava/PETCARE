@@ -9,3 +9,4 @@ langchain
 langchain_community
 pysqlite3-binary
 google-generativeai
+langchain-google-genai

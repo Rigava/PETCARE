@@ -9,8 +9,8 @@ import google.generativeai as genai
 key =st.secrets.API_KEY
 # from langchain_google_genai import GoogleGenerativeAI
 # llm = GoogleGenerativeAI(model='gemini-pro',google_api_key=key)
-from langchain_community.chat_models.google_palm import ChatGooglePalm
-llm = ChatGooglePalm(model ='models/gemini-1.0-pro',google_api_key =key)
+from langchain_community.llms import GooglePalm
+llm = GooglePalm(model ='models/gemini-1.0-pro',google_api_key =key)
 
 genai.configure(api_key=key)
 

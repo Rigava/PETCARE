@@ -7,9 +7,9 @@ from crewai import Crew, Process, Agent, Task
 from langchain_core.callbacks import BaseCallbackHandler
 from typing import TYPE_CHECKING, Any, Dict, Optional
 
-import google.generativeai as genai 
+import google.generativeai as palm 
 key =st.secrets.API_KEY
-genai.configure(api_key=key)
+palm.configure(google_api_key=key)
 
 
 # from langchain_google_genai import GoogleGenerativeAI

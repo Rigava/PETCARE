@@ -6,10 +6,12 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 from crewai import Crew, Process, Agent, Task
 from langchain_core.callbacks import BaseCallbackHandler
 from typing import TYPE_CHECKING, Any, Dict, Optional
+
 import google.generativeai as genai 
+key =st.secrets.API_KEY
 genai.configure(api_key=key)
 
-key =st.secrets.API_KEY
+
 # from langchain_google_genai import GoogleGenerativeAI
 # llm = GoogleGenerativeAI(model='models/text-bison-001',google_api_key=key)
 from langchain_community.llms import GooglePalm

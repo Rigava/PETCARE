@@ -1,5 +1,5 @@
 crewai==0.28.7
-langchain-google-genai==1.0.3
+# langchain-google-genai==1.0.3
 langchain==0.1.17
 langchain_community
 pysqlite3-binary

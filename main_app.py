@@ -14,7 +14,7 @@ palm.configure(api_key=key)
 
 # from langchain_google_genai import GoogleGenerativeAI
 from langchain_community.chat_models.google_palm import ChatGooglePalm
-llm = ChatGooglePalm(model='models/text-bison-001',google_api_key=key)
+llm = ChatGooglePalm(model='models/gemini-1.0-pro',google_api_key=key)
 # from langchain_community.llms import GooglePalm
 # llm = GooglePalm(model ='models/gemini-1.0-pro',google_api_key =key)
 

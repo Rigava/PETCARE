@@ -17,9 +17,9 @@ fil = st.sidebar.multiselect("Select the chatgpt prompts for your character/act"
 filered_df = df[df.act.isin(fil)]
 st.write(filered_df)
 
-
+key =st.secrets.API_KEY
 #For Prompting
-palm.configure(api_key = "AIzaSyAKEaaM7fWIErN3VbikjP_T5m0UfhBy5iE")
+palm.configure(api_key = key)
 model_bison ='models/text-bison-001'
 from google.api_core import retry
 @retry.Retry()

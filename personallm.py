@@ -30,14 +30,14 @@ def generate_text(prompt,
                               model=model,
                               temperature=temperature)
 
-task_list = ["Take persona help","Chat"]
+task_list = ["Generate","Chat"]
 task = st.selectbox("What is your task",task_list)
 input = st.text_area("ask your question")
 priming_input = st.text_area("prompt the persona")
 if st.button("Submit"):
         with st.spinner("processing"):
             
-            if task == "Take persona help":
+            if task == "Generate":
                 st.subheader("The most easy way to do it is shown below")
                 prompt_template = """
                 {priming}

@@ -21,7 +21,7 @@ fil = st.sidebar.multiselect("Select the chatgpt prompts for your character/act"
 filered_df = df[df.act.isin(fil)]
 st.write(filered_df)
 
-
+key =st.secrets.API_KEY
 #For Prompting
 key =st.secrets.API_KEY
 palm.configure(api_key = key)

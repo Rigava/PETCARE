@@ -1,3 +1,7 @@
+# https://github.com/f/awesome-chatgpt-prompts/blob/main/_layouts/default.html
+# https://alejandro-ao.com/how-to-use-streaming-in-langchain-and-streamlit/
+# https://www.youtube.com/watch?v=zKGeRWjJlTU
+
 import streamlit as st
 import pandas as pd
 import google.generativeai as palm
@@ -19,7 +23,8 @@ st.write(filered_df)
 
 
 #For Prompting
-palm.configure(api_key = "AIzaSyAKEaaM7fWIErN3VbikjP_T5m0UfhBy5iE")
+key =st.secrets.API_KEY
+palm.configure(api_key = key)
 model_bison ='models/text-bison-001'
 from google.api_core import retry
 @retry.Retry()
@@ -33,7 +38,7 @@ def generate_text(prompt,
 task_list = ["Generate","Chat"]
 task = st.selectbox("What is your task",task_list)
 input = st.text_area("ask your question")
-priming_input = st.text_area("prompt the persona")
+priming_input = st.text_area("enter the persona prompt")
 if st.button("Submit"):
         with st.spinner("processing"):
             

@@ -1,3 +1,5 @@
+# https://www.youtube.com/watch?v=af9GIXYG_yQ
+
 import streamlit as st
 import json
 from streamlit_agraph import agraph, Node, Edge, Config
@@ -6,7 +8,6 @@ import pandas as pd
 from time import time
 
 st.title('Companies & their Management')
-
 @st.cache_data
 def load_data_a():
     df = pd.read_csv('https://raw.githubusercontent.com/Rigava/DataRepo/main/companyMgmt.csv')

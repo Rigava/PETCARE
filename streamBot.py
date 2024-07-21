@@ -14,7 +14,7 @@ if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
 st.set_page_config(page_title="streaming bot", page_icon =':bar_chart:')
-st.title("Streaming Bot")
+st.title("BigB Streaming Bot")
 #Get response of ai
 def get_response(user_query, chat_history):
 

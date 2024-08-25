@@ -8,7 +8,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_community.chat_models.google_palm import ChatGooglePalm
 from langchain_google_genai import ChatGoogleGenerativeAI 
 
-key=  "AIzaSyAKEaaM7fWIErN3VbikjP_T5m0UfhBy5iE"
+key =st.secrets.API_KEY
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []

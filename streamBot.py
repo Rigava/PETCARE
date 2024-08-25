@@ -1,14 +1,14 @@
 # https://www.youtube.com/watch?v=zKGeRWjJlTU
 # https://alejandro-ao.com/how-to-use-streaming-in-langchain-and-streamlit/
-
+# https://github.com/amjadraza/streamlit-agent/blob/main/streamlit_agent/basic_streaming.py
 import streamlit as st
 from langchain_core.messages import HumanMessage,AIMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.chat_models.google_palm import ChatGooglePalm
-from langchain_community.llms import GooglePalm
+from langchain_google_genai import ChatGoogleGenerativeAI 
 
-key =st.secrets.API_KEY
+key=  "AIzaSyAKEaaM7fWIErN3VbikjP_T5m0UfhBy5iE"
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
@@ -27,7 +27,12 @@ def get_response(user_query, chat_history):
     """
 
     prompt = ChatPromptTemplate.from_template(template)
-    llm = ChatGooglePalm(model ='models/gemini-1.0-pro',google_api_key =key)
+    # llm = ChatGooglePalm(model ='models/gemini-1.0-pro',google_api_key =key)
+    llm = ChatGoogleGenerativeAI(
+model="gemini-pro",
+temperature=0.1,
+google_api_key=key,
+)
 
         
     chain = prompt | llm | StrOutputParser()

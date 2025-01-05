@@ -1,4 +1,5 @@
 from langchain_google_genai import ChatGoogleGenerativeAI 
+from langchain_groq import ChatGroq
 from langchain.chains import LLMChain, SequentialChain
 from langchain.prompts import PromptTemplate
 import google.generativeai as genai 
@@ -7,14 +8,15 @@ import streamlit as st
 import os 
 
 key =st.secrets.API_KEY
-llm = ChatGoogleGenerativeAI(
-    model="gemini-pro",
-    temperature=0.1,
-    google_api_key=key,
-    convert_system_message_to_human=True
-)
+llm = ChatGroq(temperature=0,groq_api_key = key,model_name = 'llama-3.1-70b-versatile')
+# llm = ChatGoogleGenerativeAI(
+#     model="gemini-pro",
+#     temperature=0.1,
+#     google_api_key=key,
+#     convert_system_message_to_human=True
+# )
 
-genai.configure(api_key=key)
+# genai.configure(api_key=key)
 
 template1 = """
 I have a problem for you to solve, the problem is {input}
